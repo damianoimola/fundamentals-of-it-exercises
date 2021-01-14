@@ -30,18 +30,18 @@ print(delete_vowels("prova"))
 """ 
 """
 def return_digit(L):
-# @param L : list
+# @param L : str
 # @return list
     if len(L) == 0:
-        return []
+        return ""
     else:
         if L[0].isdigit():
-            return L[0].extend(return_digit(L[1:]))
+            return L[0] + return_digit(L[1:])
         else:
             return return_digit(L[1:])
 
 def count_digit(L):
-# @param L : list
+# @param L : list T
 # @return Int
     if len(L) == 0:
         return 0
@@ -51,8 +51,11 @@ def count_digit(L):
         else:
             return 0 + count_digit(L[1:])
 print("# GENERICO 2 #")
-print(return_digit([1, "a", 2, "b", 3, "c"]))
-print(count_digit([1, "a", 2, "b", 3, "c"]))
+print(return_digit("1A2b3C4d"))
+print(count_digit("1A2b3C4d"))
+
+
+
 
 
 
@@ -203,12 +206,6 @@ print(recursion4bis(6))
 
 
 
-
-
-
-
-
-
 """ PROBLEMA 5
 """
 class Iterator:
@@ -329,15 +326,4 @@ rimanente, il numero di elementi al suo interno, l’elemento con occupazione
 massima e quello con occupazione minima.
 
 """
-class Item:
-    def __init__(self, C, name):
-    # @param C : Int
-        self.capacity = C
-        self.name = name
-
-class Knapsack:
-    
-    def __init__(self, C, items):
-    # @param C : Int
-        self.capacity = C
-        self.items = []
+# TODO
