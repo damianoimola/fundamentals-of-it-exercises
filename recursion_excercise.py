@@ -1,8 +1,9 @@
 # ----- PROBLEMI DI ESAME ----- #
 def exam1():
+    print("### EXAM 1 ###")
     """
     Scrivere una funzione ricorsiva che, data una stringa s, restituisce vero se la stringa
-    contiene la stessa quantità di cifre numeriche e caratteri alfabetici, falso altrimenti. Nota: ricordare i
+    contiene la stessa quantita di cifre numeriche e caratteri alfabetici, falso altrimenti. Nota: ricordare i
     metodi isdigit() e isalpha() del tipo di dato str in Python
     """
     def digitAsChars(s):
@@ -18,8 +19,7 @@ def exam1():
                     chrIndex = i
                 elif s[i].isdigit() and digIndex == -1:
                     digIndex = i
-
-            if digIndex == -1 and chrIndex == -1:
+            if digIndex == -1 or chrIndex == -1:
                 return False
             elif digIndex > chrIndex:
                 s = s[:digIndex] + s[digIndex+1:]
@@ -29,16 +29,16 @@ def exam1():
                 s = s[:chrIndex] + s[chrIndex+1:]
                 s = s[:digIndex] + s[digIndex+1:]
                 return digitAsChars(s)
-    
+
 
 
     """
      Si definisca una classe che ha come attributo una tupla di N interi aventi valore
     iniziale 0, con N definito al momento della creazione di un oggetto della classe. Inoltre, la classe
     dispone di un metodo per visualizzare tutta la tupla, e di un metodo per modificare l'attributo tupla
-    con una nuova tupla dove il valore k è stato sommato all'elemento in posizione i della vecchia tupla.
+    con una nuova tupla dove il valore k e stato sommato all'elemento in posizione i della vecchia tupla.
     Definire poi una classe derivata dalla prima, dove il valore iniziale del primo elemento della tupla
-    (possibilmente diverso da 0) può essere specificato al momento della creazione di un oggetto della
+    (possibilmente diverso da 0) puo essere specificato al momento della creazione di un oggetto della
     classe. Fornire, inoltre, alcuni frammenti di codice Python che esemplificano l'uso delle classi
     (creazione di oggetti delle due classi, uso dei metodi).
     """
@@ -55,7 +55,7 @@ def exam1():
         # @param k : Int
         # @param i : Int
             tmpTuple = ()
-            for j in range(0, len(self.tuple)):                
+            for j in range(0, len(self.tuple)):
                 if j == i:
                     tmpTuple = tmpTuple + (self.tuple[i] + k,)
                 else:
@@ -70,7 +70,7 @@ def exam1():
             if initialValue != 0:
                 for i in range(0, n):
                     self.customSum(initialValue, i)
-        
+
     def testCustomClass():
         c = CustomClass(10)
         c.display()
@@ -85,11 +85,12 @@ def exam1():
 
 
 def exam2():
+    print("### EXAM 2 ###")
     """
     Si definisca una classe Centometrista. Ogni oggetto della classe ha come attributi la
-    sua età, il suo nome e l'insieme (inizialmente vuoto) dei tempi fatti segnare nell'anno corrente.
+    sua eta, il suo nome e l'insieme (inizialmente vuoto) dei tempi fatti segnare nell'anno corrente.
     Inoltre la classe dispone di operazioni che consentono di: (i) ottenere il nome dell'atleta, (ii) ottenere
-    la sua età, (iii) aggiungere un nuovo tempo all'insieme dei tempi fatti segnare, (iv) ottenere il
+    la sua eta, (iii) aggiungere un nuovo tempo all'insieme dei tempi fatti segnare, (iv) ottenere il
     minimo tempo conseguito.
     Dare la definizione completa della classe in Python, che include la definizione del costruttore e dei
     metodi indicati. Fornire, inoltre, alcuni frammenti di codice Python che esemplificano l'uso della
@@ -107,7 +108,7 @@ def exam2():
         def getName(self):
         # @return Str
             return self.name
-    
+
         def getAge(self):
         # @return Int
             return self.age
@@ -120,12 +121,12 @@ def exam2():
         # @return Int
             return min(self.timestamps)
 
-    
+
     """
     Scrivere una funzione ricorsiva che, data una stringa s, restituisce una nuova stringa
     ottenuta da s aggiungendo il carattere '.' dopo ogni carattere alfabetico o numerico.
     (Nota: il tipo di dato string in Python possiede gli operatori isalpha : string ! bool e
-    isdigit : string ! bool che, applicati a una stringa, verificano se essa è formata,
+    isdigit : string ! bool che, applicati a una stringa, verificano se essa e formata,
     rispettivamente, da soli caratteri alfabetici o numerici)
     """
     def dotsAreEverywhere(s):
@@ -148,10 +149,81 @@ def exam2():
             if prefix.isalnum():
                 prefix = prefix + "."
             return prefix + dotsAreEverywhere(s[1:])
+
+
+def exam3():
+    print("### EXAM 3 ###")
+    """
+    Scrivere una funzione ricorsiva che, data una lista di numeri interi (positivi o
+    negativi), restituisce come risultato la somma dei valori pari contenuti nella lista. Se la lista non
+    contiene valori pari, la funzione restituisce 0
+    """
+    def sumOddsNumber(l):
+    # @param l : List
+    # @return Int
+        if len(l) == 0:
+            return False
+        elif len(l) == 1:
+            return l[0]%2==0
+        else:
+            if l[-1]%2==0:
+                return l[-1] + sumOddsNumber(l[:-1])
+            else:
+                return sumOddsNumber(l[:-1])
+    print(sumOddsNumber([1,2,3,2,5,2,7,2,9,2,4]))
+
+    """
+    Si consideri una classe Quadrato, che intende rappresentare tutti i possibili quadrati di
+    lato l. La classe ha come attributo la lunghezza del lato l, e come metodi i metodi Area() e
+    Perimetro() che restituiscono, rispettivamente, l'area e il perimetro del quadrato. Dare la definizione
+    completa della classe, che include la definizione del suo costruttore e dei due metodi indicati.
+    Fornire, inoltre, alcuni frammenti di codice Python che esemplificano l'uso della classe (creazione
+    di un oggetto "quadrato", calcolo della sua area o perimetro). 
     
+    """
+    class Quadrato:
+        def __init__(self, l):
+        # @param l : Int
+            self.lunghezzaLato = l
+
+        def Area(self):
+        # @return Int
+            return self.lunghezzaLato ** 2
+
+        def Perimetro(self):
+        # @return Int
+            return self.lunghezzaLato * 4
+
+    def exampleOfUse():
+        q = Quadrato(4)
+        print(q.Perimetro())
+        print(q.Area())
 
 
-                
+
+def exam4():
+    print("### EXAM 4 ###")
+    """
+    Si definisca una funzione ricorsiva che, data una lista L, un valore V e
+    un intero k, restituisce true se il valore V e presente in tutte le posizioni della lista il
+    cui indice e multiplo di k, e false altrimenti.
+    """
+    def checkIndexOnMultiple(L, V, k):
+    # @param L : list
+    # @param V : T
+    # @param k : Int
+        if len(L) == 0:
+            return False
+        else:
+            length = len(L)
+            if (length)%k==0:
+                if L[-1] != V:
+                    return False
+            return True
+    print(checkIndexOnMultiple([1,2,3,2,4,2,5,2,6,2,7,2], 2, 2))
+    print(checkIndexOnMultiple([1,2,3,2,4,2,5,2,6,2,7,3], 2, 2))
+
+
 
 
 
@@ -441,17 +513,6 @@ def exercise5():
     iterator.display()
     iterator.remove()
     iterator.display()
-    
-    print("---")
-    iterator.next()
-    iterator.next()
-    print(iterator.hasNext())
-    print(iterator.hasPrevious())
-    iterator.display()
-    iterator.add(99999)
-    iterator.display()
-    iterator.remove()
-    iterator.display()
 
     print("---")
     iterator.next()
@@ -464,7 +525,18 @@ def exercise5():
     iterator.remove()
     iterator.display()
 
-    
+    print("---")
+    iterator.next()
+    iterator.next()
+    print(iterator.hasNext())
+    print(iterator.hasPrevious())
+    iterator.display()
+    iterator.add(99999)
+    iterator.display()
+    iterator.remove()
+    iterator.display()
+
+
 
 
 
@@ -475,6 +547,8 @@ ritorna vero se almeno un pixel ha la media delle componenti del proprio colore
 strettamente maggiore di avg e falso altrimenti.
 Suggerimento: la funzione getPixels(pict) ritorna una lista di pixel che pu??
 essere passata all'Iterator.
+
+METHOD FOR JES ENVIRONMENT
 """
 def problem6(P, avg):
 # @param P : pict
@@ -630,7 +704,7 @@ def compareOccurrences(s):
             else:
                 s = s[:digIndex] + s[digIndex+1:]
                 s = s[:chrIndex] + s[chrIndex+1:]
-            return compareOccurrences(s) 
+            return compareOccurrences(s)
         elif chrIndex == digIndex:
             return True
         else:
@@ -791,7 +865,7 @@ def problem14():
 
 
 
-            
+
 
 
 
@@ -841,5 +915,5 @@ def main():
     problem13()
     # --
     problem14()
-    
+
 main()
