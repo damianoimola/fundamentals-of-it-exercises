@@ -540,40 +540,9 @@ def exercise5():
 
 
 
+
+
 """ PROBLEMA 6
-Scrivere una funzione Python che, data un'immagine P e un float
-avg, si scorre la lista (usando l'Iterator definito nell'esercizio [5]) dei pixel di P e
-ritorna vero se almeno un pixel ha la media delle componenti del proprio colore
-strettamente maggiore di avg e falso altrimenti.
-Suggerimento: la funzione getPixels(pict) ritorna una lista di pixel che pu??
-essere passata all'Iterator.
-
-METHOD FOR JES ENVIRONMENT
-"""
-def problem6(P, avg):
-# @param P : pict
-# @param avg : float
-# @return bool
-    pixels = P.getPixels()
-    iterator = Iterator(pixels)
-
-    for pix in range(0, len(pixels)):
-        elem = iterator.next()
-        average = (getRed(elem) + getGreen(elem) + getBlue(elem))/3
-        if average == avg:
-            return True
-    return False
-def exercise6():
-    print("### PROBLEM 6 ###")
-    #pict = makeEmptyPicture(50, 50, white)
-    #print(problem6(pict, 255))
-
-
-
-
-
-
-""" PROBLEMA 7
 Definire in Python una classe Knapsack (zaino) che prende come
 parametro del costruttore un numero intero positivo C che indica la capacit??
 massima dello zaino. La classe ha come attributo una lista di Item (Item ?? a sua
@@ -656,8 +625,8 @@ class Knapsack:
             capacity_tuple = min(elements)
             return self.items[capacity_tuple[1]].name
 
-def problem7():
-    print("### PROBLEM 7 ###")
+def problem6():
+    print("### PROBLEM 6 ###")
     knapsack = Knapsack(10)
     print("Rimangono", knapsack.capacity_remaining(), "slot liberi")
     print("Sono presenti", knapsack.number_of_items(), "oggetti")
@@ -709,8 +678,8 @@ def compareOccurrences(s):
             return True
         else:
             return False
-def problem8():
-    print("### PROBLEM 8 ###")
+def problem7():
+    print("### PROBLEM 7 ###")
     print(compareOccurrences("a1b2c3"))
     print(compareOccurrences("a1b2c"))
     print(compareOccurrences("?"))
@@ -723,7 +692,7 @@ def problem8():
 
 
 
-""" PROBLEM 9
+""" PROBLEM 8
 Scrivere una funzione ricorsiva che, data una stringa s, restituisce come risultato una stringa ottenuta elimanando da s tutti i caratteri ripetuti consecutivamente, tranne il primo (Es.: se s = 'aaabbcccc' la funzione deve restituire 'abc'; se s = 'ababcc' la funzione deve restituire 'ababc'.
 """
 def deleteDuplicates(s):
@@ -736,7 +705,7 @@ def deleteDuplicates(s):
             return s[0] + deleteDuplicates(s[2:])
         else:
             return s[0] + deleteDuplicates(s[1:])
-def problem9():
+def problem8():
     print("### PROBLEM 9 ###")
     print(deleteDuplicates("aaabbcccc"))
     print(deleteDuplicates("ac"))
@@ -745,7 +714,7 @@ def problem9():
 
 
 
-""" PROBLEM 10
+""" PROBLEM 9
 Scrivere una funzione ricorsiva che data una lista di interi l restituisce la somma dei soli numeri pari.
 """
 def sumOddNumbers(L):
@@ -758,8 +727,8 @@ def sumOddNumbers(L):
             return L[0] + sumOddNumbers(L[1:])
         else:
             return sumOddNumbers(L[1:])
-def problem10():
-    print("### PROBLEM 10 ###")
+def problem9():
+    print("### PROBLEM 9 ###")
     print(sumOddNumbers([1,2,3,4,5,6,7,8,9]))
     print(sumOddNumbers([1,2,3,4,5,6,7]))
 
@@ -768,7 +737,7 @@ def problem10():
 
 
 
-""" PROBLEM 11
+""" PROBLEM 10
 Scrivere una funzione ricorsiva che, data una lista di numeri interi (positivi o negativi), restituisce come risultato il valore vero se la somma dei numeri contenuti nella lista ? un valori pari, falso altrimenti. Se la lista ? vuota, la funzione restituisce il valore vero.
 """
 # TODO: CHECK
@@ -788,14 +757,14 @@ def isSumOdd(l):
         else:
             return l[0]%2==0
 
-def problem11():
-    print("### PROBLEM 11 ###")
+def problem10():
+    print("### PROBLEM 10 ###")
     print(isSumOdd([1,2,3,-1,-2,-3,-1,-1]))
 
 
 
 
-""" PROBLEM 12
+""" PROBLEM 11
 Scrivere un funzione ricorsiva che data una stringa s controlli se la lista divisa a met? abbia la prima parte uguale alla seconda. se la lista ? dispari, non co?alcolare l'elemento centrale
 """
 def halfPalindrome(s):
@@ -806,8 +775,8 @@ def halfPalindrome(s):
     else:
         return s[0] == s[-1] and halfPalindrome(s[1:-1])
 
-def problem12():
-    print("### PROBLEM 12 ###")
+def problem11():
+    print("### PROBLEM 11 ###")
     print(halfPalindrome("abcdef"))
     print(halfPalindrome("abccba"))
     print(halfPalindrome("ab"))
@@ -820,7 +789,7 @@ def problem12():
 
 
 
-""" PROBLEMA 13
+""" PROBLEMA 12
 Scrivere una funzione ricorsiva che, dato una lista di interi l, restituisca una nuova lista di interi ottenuto da l sostituendo ogni numero negativo con 0. Ad esempio l'invocazione azzeraNegativi({1,-2, 3, 4, -5}), deve restituire l'array {1, 0, 3, 4, 0}
 """
 def negativesToZero(l):
@@ -834,8 +803,8 @@ def negativesToZero(l):
         else:
             return [l[0]] + negativesToZero(l[1:])
 
-def problem13():
-    print("### PROBLEM 13 ###")
+def problem12():
+    print("### PROBLEM 12 ###")
     print(negativesToZero([1,-1,2,-2,3,-3]))
 
 
@@ -845,7 +814,7 @@ def problem13():
 
 
 
-""" PROBLEM 14
+""" PROBLEM 13
 Scrivere una funzione ricorsiva che data una stringa s, restituisca una stringa costituita dai caratteri di s invertiti. Ad esempio l'invocazione reverse('pippo') deve restituire la stringa 'oppip'
 """
 def reverse(s):
@@ -856,8 +825,8 @@ def reverse(s):
     else:
         return s[-1] + reverse(s[:-1])
 
-def problem14():
-    print("### PROBLEM 14 ###")
+def problem13():
+    print("### PROBLEM 13 ###")
     print(reverse("pippo"))
     print(reverse("ossesso"))
     print(reverse("palla"))
@@ -898,7 +867,7 @@ def main():
     # --
     exercise5()
     # --
-    exercise6()
+    problem6()
     # --
     problem7()
     # --
